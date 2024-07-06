@@ -18,10 +18,9 @@ for seed in "0"
 do
     for data_seed in "0" "1" "2" "3" "4" "5" "6" "7" "8" "9"
     do
-        $PYTHON_BIN/deepspeed \
+        deepspeed \
             --include localhost:0,1,2,3,4,5,6,7 \
-            --master_port $port \
-            $PROJECT_DIR/ft.py \
+            ft.py \
             --wandb_project_name llmft-experiments \
             --wandb_group_name vanilla-ft \
             --model_name_or_path $model_name_or_path \
@@ -46,12 +45,12 @@ do
             --evaluation_strategy epoch \
             --per_device_eval_batch_size 10 \
             --eval_on_cola_ood \
-            --cola_ood_file $PROJECT_DIR/data/cola_ood/dev.tsv \
+            --cola_ood_file data/cola_ood/dev.tsv \
             --save_strategy no \
             --fp16 \
             --seed $seed \
             --data_seed $data_seed \
-            --deepspeed $PROJECT_DIR/deepspeed_configs/ds_config_zero3.json \
+            --deepspeed deepspeed_configs/ds_config_zero3.json \
             --deepspeed_stage 3 \
             --report_to "none"
     done

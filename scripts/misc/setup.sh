@@ -1,6 +1,6 @@
 # setup basic paths
-export CACHE_BASE_DIR=/home/mmosbach/cache
-export OUTPUT_DIR=/home/mmosbach/logfiles
+export CACHE_BASE_DIR=~/Desktop/testoutput/cache
+export OUTPUT_DIR=~/Desktop/testoutput/logfiles
 
 # setup wandb
 export WANDB_DISABLED=false
